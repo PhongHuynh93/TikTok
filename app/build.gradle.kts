@@ -1,27 +1,35 @@
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
+    id(Plugins.androidApplication)
+    id(Plugins.hilt)
+    kotlin(Plugins.kotlinAndroid)
+    id(Plugins.kotlinParcel)
+    kotlin(Plugins.kapt)
+    id(Plugins.safeArgs)
 }
 
 android {
-    compileSdk = 30
-    buildToolsVersion = "30.0.3"
+    compileSdkVersion(Configs.compileSdk)
 
     defaultConfig {
-        applicationId = "com.umbrella.tiktok"
-        minSdk = 21
-        targetSdk = 30
+        applicationId = Configs.androidApplicationId
+        minSdkVersion(Configs.minSdk)
+        targetSdkVersion(Configs.targetSdk)
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
+    }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -33,12 +41,43 @@ android {
 }
 
 dependencies {
+//    implementation(project(":domain"))
 
-    implementation("androidx.core:core-ktx:1.6.0")
-    implementation("androidx.appcompat:appcompat:1.3.0")
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    testImplementation("junit:junit:4.+")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    // kotlin
+    implementation(Libs.Kotlin.std)
+
+    // android
+    implementation(Libs.Android.appCompat)
+    implementation(Libs.Android.material)
+    implementation(Libs.Android.recyclerView)
+    implementation(Libs.Android.constraint)
+    implementation(Libs.Android.viewPager)
+    implementation(Libs.Android.core)
+    implementation(Libs.Android.fragment)
+    implementation(Libs.Android.activity)
+    implementation(Libs.Android.lifeCycle)
+    implementation(Libs.Android.viewModel)
+    implementation(Libs.Android.lifeCycleCommon)
+    implementation(Libs.Android.navFragment)
+    implementation(Libs.Android.navUI)
+
+    // dagger
+    implementation(Libs.Injection.core)
+    kapt(Libs.Injection.daggerCompiler)
+    kapt(Libs.Injection.hiltCompiler)
+
+    // load image
+    implementation(Libs.ImageLoader.core)
+    kapt(Libs.ImageLoader.compiler)
+    implementation(Libs.ImageLoader.rcv) {
+        isTransitive = false
+    }
+
+    // helper
+    implementation(Libs.Helper.log)
+    implementation(Libs.Helper.photoView)
+
+    // thread
+    implementation(Libs.Thread.core)
+    implementation(Libs.Thread.android)
 }

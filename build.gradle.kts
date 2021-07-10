@@ -3,13 +3,26 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven {
+            setUrl("https://www.jitpack.io")
+        }
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.0-beta04")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20")
+        classpath(ClassPaths.gradlePlugin)
+        classpath(ClassPaths.kotlinPlugin)
+        classpath(ClassPaths.hilt)
+        classpath(ClassPaths.safeArgs)
+        classpath(ClassPaths.serialization)
+    }
+}
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle.kts files
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            setUrl("https://www.jitpack.io")
+        }
     }
 }
 
