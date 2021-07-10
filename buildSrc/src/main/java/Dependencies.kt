@@ -1,7 +1,7 @@
 object Versions {
     const val kotlin = "1.5.10"
     const val coroutines = "1.5.0"
-    const val gradlePlugin: String = "4.0.2"
+    const val gradlePlugin: String = "7.1.0-alpha02"
     const val glide: String = "4.11.0"
     const val supportLibrary: String = "1.2.0"
     const val material: String = "1.3.0"
@@ -14,7 +14,7 @@ object Versions {
     const val activityKtx = "1.2.2"
     const val lifeCycleKtx = "2.4.0-alpha02"
     const val log = "4.7.1"
-    const val hilt = "2.35"
+    const val hilt = "2.37"
     const val hiltWorkManager = "1.0.0"
     const val kotlinSerialization = "1.2.1"
     const val nav = "2.4.0-alpha01"
