@@ -1,6 +1,7 @@
 package com.umbrella.tiktok
 
 import android.app.Application
+import androidx.appcompat.app.AppCompatDelegate
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
@@ -9,6 +10,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         if (BuildConfig.DEBUG) {
             Timber.plant(object : Timber.DebugTree() {
                 /**
