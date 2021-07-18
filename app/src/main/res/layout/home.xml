@@ -11,9 +11,20 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:menu="@menu/bottom_navigation_home_menu" />
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/bottom_navigation_home_menu" />
+
+        <com.umbrella.tiktok.widget.TikTokButton
+            android:id="@+id/btn"
+            android:layout_width="44dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center" />
+    </FrameLayout>
 </LinearLayout>
